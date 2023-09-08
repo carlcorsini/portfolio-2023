@@ -242,7 +242,6 @@ function ResponsiveAppBar() {
                       variant="h5"
                       component="div">
                       {a.name}
-                      test
                     </Typography>
                     <Typography
                       sx={{ color: 'white' }}
