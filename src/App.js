@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,10 +13,44 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import { Divider } from '@mui/material';
+import { Avatar, Divider } from '@mui/material';
 import Grid from '@mui/material/Grid';
+import Chip from '@mui/material/Chip';
 import logo from './banner.JPEG';
+// import logo2 from './avatar.jpg';
+import avatar from './avatar.jpg'
 import resume from './resume.pdf';
+
+const skills = [
+  'JavaScript',
+  'TypeScript',
+  'React',
+  'React Native',
+  'GraphQL',
+  'Material UI',
+  'Ruby',
+  'Python',
+  'HTML & CSS',
+  'Rails',
+  'Redux',
+  'SQL',
+  'NoSQL',
+  'PostgreSQL',
+  'MongoDB',
+  'Node.JS',
+  'Express',
+  'Flask, Mocha & Chai',
+  'Pytest',
+  'Ubuntu',
+  'Digital Ocean',
+  'Heroku',
+  'AWS',
+  'Test Driven Development',
+  'Agile Methodology',
+  'Pair Programming',
+  'Git Workflow',
+  'Object Oriented Programming',
+];
 
 const prjs = [
   {
@@ -82,6 +116,7 @@ const pages = [
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  // const [slide, setSlide] = useState(logo);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -91,6 +126,11 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     setSlide(logo2);
+  //   }, 5000);
+  // });
   return (
     <>
       <AppBar
@@ -115,7 +155,7 @@ function ResponsiveAppBar() {
                 color: 'inherit',
                 textDecoration: 'none',
               }}>
-              Adam Ayiyoje
+              Carl Corsini
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -161,7 +201,7 @@ function ResponsiveAppBar() {
                   href={page.href}
                   key={page.name}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}>
+                  sx={{ my: 2, color: '#ebebeb', display: 'block' }}>
                   {page.name}
                 </Button>
               ))}
@@ -172,7 +212,9 @@ function ResponsiveAppBar() {
                 flexGrow: 0,
                 flexDirection: 'row',
               }}>
-              <Typography href="" sx={{ mr: 1 }}>LinkedIn</Typography>
+              <Typography href="" sx={{ mr: 1 }}>
+                LinkedIn
+              </Typography>
               <Typography>GitHub</Typography>
             </Box>
           </Toolbar>
@@ -197,10 +239,10 @@ function ResponsiveAppBar() {
             {' '}
           </Grid>
           <Grid item xs={11}>
-            <Typography variant="h4" sx={{ color: 'white', mt: 7 }}>
-              Adam Ayiyoje
+            <Typography variant="h4" sx={{ color: '#ebebeb', mt: 7 }}>
+              Carl Corsini
             </Typography>
-            <Typography variant="h6" sx={{ color: 'white' }}>
+            <Typography variant="h6" sx={{ color: '#ebebeb' }}>
               Software Engineer
             </Typography>
           </Grid>
@@ -213,38 +255,61 @@ function ResponsiveAppBar() {
             container
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}>
+            <Grid item xs={12} sm={3} md={3}></Grid>
+            <Grid item xs={12} sm={6} md={6}>
+              <Avatar style={{margin: 'auto', height: '250px', width: '250px', marginBottom: '12px'}} src={avatar}/>
+              <Typography style={{ color: '#ebebeb', marginBottom: 12 }}>
+                Full Stack Software Engineer who eats, sleeps, and breathes
+                JavaScript. Passionate about creating enjoyable and life
+                altering experiences through technology. Technically skilled
+                programmer with advanced interpersonal skills from experience in
+                management
+              </Typography>
+              <div style={{textAlign: 'center'}}>
+              {skills.map((a) => (
+                <Chip size="small" style={{ backgroundColor: '#ebebeb' }} sx={{margin: .5}} label={a} />
+              ))}
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={3} md={3}></Grid>
             <Grid item xs={12} sm={12} md={12}>
-              <Divider />
+              <Divider sx={{ borderColor: '#ebebeb' }} light />
               <Typography
-                variant="h4"
-                sx={{ textAlign: 'center', mt: 3, color: 'white' }}>
+                variant="h3"
+                sx={{ textAlign: 'center', mt: 2, mb: 2, color: '#ebebeb' }}>
                 Portfolio
               </Typography>
+              <Divider sx={{ borderColor: '#ebebeb' }} light />
             </Grid>
             {prjs.map((a) => (
-              <Grid sx={{ display: 'flex' }} item xs={12} sm={4} md={4}>
+              <Grid
+                sx={{ display: 'flex', justifyContent: 'center' }}
+                item
+                xs={12}
+                sm={4}
+                md={4}>
                 <Card
-                  elevation={2}
+                  elevation={5}
                   sx={{
                     maxWidth: 345,
                     backgroundColor: '#181818',
-                    color: 'white',
+                    color: '#ebebeb',
                   }}>
                   <CardMedia
                     sx={{ height: 250 }}
                     image={a.img}
                     title={a.name}
                   />
-                  <CardContent sx={{ color: 'white' }}>
+                  <CardContent sx={{ color: '#ebebeb' }}>
                     <Typography
-                      sx={{ color: 'white' }}
+                      sx={{ color: '#ebebeb' }}
                       gutterBottom
                       variant="h5"
                       component="div">
                       {a.name}
                     </Typography>
                     <Typography
-                      sx={{ color: 'white' }}
+                      sx={{ color: '#ebebeb' }}
                       variant="body2"
                       color="text.secondary">
                       {a.desc}
@@ -252,8 +317,7 @@ function ResponsiveAppBar() {
                   </CardContent>
                   <CardActions>
                     <Button
-
-                      sx={{ color: 'white' }}
+                      sx={{ color: '#ebebeb' }}
                       href={a.link}
                       target="_blank"
                       size="small">
@@ -269,23 +333,23 @@ function ResponsiveAppBar() {
                   sx={{
                     maxWidth: 345,
                     backgroundColor: '#181818',
-                    color: 'white',
+                    color: '#ebebeb',
                   }}>
                   <CardMedia
                     sx={{ height: 250 }}
                     image={logo}
                     // title={a.name}
                   />
-                  <CardContent sx={{ color: 'white' }}>
+                  <CardContent sx={{ color: '#ebebeb' }}>
                     <Typography
-                      sx={{ color: 'white' }}
+                      sx={{ color: '#ebebeb' }}
                       gutterBottom
                       variant="h5"
                       component="div">
                       More!
                     </Typography>
                     <Typography
-                      sx={{ color: 'white' }}
+                      sx={{ color: '#ebebeb' }}
                       variant="body2"
                       color="text.secondary">
                       Please reach out to see more projects or maybe add yours to the list!
@@ -293,7 +357,7 @@ function ResponsiveAppBar() {
                   </CardContent>
                   <CardActions>
                     <Button
-                      sx={{ color: 'white' }}
+                      sx={{ color: '#ebebeb' }}
                       // href={a.link}
                       target="_blank"
                       size="small">
